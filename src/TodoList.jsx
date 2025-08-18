@@ -1,30 +1,60 @@
+import './TodoList.css';
 import { useState } from "react";
 
 function TodoList() {
   const [todos, setTodos] = useState(["리액트 공부하기", "운동하기"]);
-  const [newTodo, setNewTodo] = useState(""); // 입력값 상태
+  const [newTodo, setNewTodo] = useState("");
+  const [checked, setChecked] = useState([]);
+
+  const handleCheck = (todo) => {
+    if (checked.includes(todo)) {
+      setChecked(checked.filter((t) => t !== todo));
+    } else {
+      setChecked([...checked, todo]);
+    }
+  };
+
+  const handleDelete = () => {
+    setTodos(todos.filter((todo) => !checked.includes(todo)));
+    setChecked([]);
+  };
 
   const handleAdd = () => {
-    if (newTodo.trim() === "") return; // 빈 값 방지
-    setTodos([...todos, newTodo]);     // 배열 복사 + 새로운 값 추가
-    setNewTodo(""); // 입력창 초기화
+    if (newTodo.trim() === "") return;
+    setTodos([...todos, newTodo]);
+    setNewTodo("");
   };
 
   return (
-    <div>
+    <div className="todo-container">
       <h2>할 일 목록</h2>
-      <input type="text"
+      <input
+        type="text"
         value={newTodo}
         placeholder="할 일을 입력하세요"
         onChange={(e) => setNewTodo(e.target.value)}
+        onKeyDown={(e) => { if (e.key === "Enter") handleAdd(); }}
       />
       <button onClick={handleAdd}>추가</button>
-
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index}>
+            <input
+              type="checkbox"
+              checked={checked.includes(todo)}
+              onChange={() => handleCheck(todo)}
+            />
+            {todo}
+          </li>
         ))}
       </ul>
+      <button
+        className="delete-btn"
+        onClick={handleDelete}
+        disabled={checked.length === 0}
+      >
+        선택 항목 삭제
+      </button>
     </div>
   );
 }
