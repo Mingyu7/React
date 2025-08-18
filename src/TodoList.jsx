@@ -2,59 +2,59 @@ import './TodoList.css';
 import { useState } from "react";
 
 function TodoList() {
-  const [todos, setTodos] = useState(["리액트 공부하기", "운동하기"]);
+  const [todos, setTodos] = useState([
+    { id: 1, text: "리액트 디자인 시스템 적용하기", completed: true },
+    { id: 2, text: "새로운 기능 추가하기", completed: false },
+  ]);
   const [newTodo, setNewTodo] = useState("");
-  const [checked, setChecked] = useState([]);
 
-  const handleCheck = (todo) => {
-    if (checked.includes(todo)) {
-      setChecked(checked.filter((t) => t !== todo));
-    } else {
-      setChecked([...checked, todo]);
-    }
+  const handleToggle = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
-  const handleDelete = () => {
-    setTodos(todos.filter((todo) => !checked.includes(todo)));
-    setChecked([]);
+  const handleDelete = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   const handleAdd = () => {
     if (newTodo.trim() === "") return;
-    setTodos([...todos, newTodo]);
+    setTodos([
+      ...todos,
+      { id: Date.now(), text: newTodo, completed: false },
+    ]);
     setNewTodo("");
   };
 
   return (
-    <div className="todo-container">
-      <h2>🌟할 일 목록🌟</h2>
-      <input
-        type="text"
-        value={newTodo}
-        placeholder="할 일을 입력하세요"
-        onChange={(e) => setNewTodo(e.target.value)}
-        onKeyDown={(e) => { if (e.key === "Enter") handleAdd(); }}
-      />
-      <button onClick={handleAdd}>추가</button>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>
-            <input
-              type="checkbox"
-              checked={checked.includes(todo)}
-              onChange={() => handleCheck(todo)}
-            />
-            {todo}
+    <div className="todolist-wrapper">
+      <h1>Todo List</h1>
+      <div className="todo-input-section">
+        <input
+          type="text"
+          className="todo-input"
+          value={newTodo}
+          placeholder="새로운 할 일을 입력하세요..."
+          onChange={(e) => setNewTodo(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter") handleAdd(); }}
+        />
+        <button className="add-btn" onClick={handleAdd}>추가</button>
+      </div>
+      <ul className="todo-list">
+        {todos.map((todo) => (
+          <li key={todo.id} className={todo.completed ? "completed" : ""}>
+            <span className="todo-text" onClick={() => handleToggle(todo.id)}>
+              {todo.text}
+            </span>
+            <button className="delete-item-btn" onClick={() => handleDelete(todo.id)}>
+              &times;
+            </button>
           </li>
         ))}
       </ul>
-      <button
-        className="delete-btn"
-        onClick={handleDelete}
-        disabled={checked.length === 0}
-      >
-        선택 항목 삭제
-      </button>
     </div>
   );
 }

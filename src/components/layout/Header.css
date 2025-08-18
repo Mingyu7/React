@@ -1,0 +1,52 @@
+.app-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.header-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+  position: static; /* Override global h1 */
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.app-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.app-nav a {
+  text-decoration: none;
+  color: var(--gray-900);
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.app-nav a:hover {
+  color: var(--primary);
+}
+
+.app-nav a.active { /* Assuming NavLink might be used later */
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
