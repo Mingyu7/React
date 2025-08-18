@@ -1,10 +1,11 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 import Hello from './Hello';
 import Profile from "./Profile";
 import Welcome from "./Welcome";
-import TodoList from "./TodoList"; // ✅ TodoList 컴포넌트 추가   
-import { useState } from "react"; // ✅ useState 사용
-
+import TodoList from "./TodoList";
 
 // LoginStatus 컴포넌트
 function LoginStatus({ isLogin }) {
@@ -39,6 +40,7 @@ function SubjectList() {
     </div>
   );
 }
+
 // ScoreList 조건부 표시
 function ScoreList() {
   const scores = [
@@ -46,7 +48,6 @@ function ScoreList() {
     { id: 2, name: "영희", score: 45 },
     { id: 3, name: "민수", score: 70 },
   ];
-  // 60점 이상이면 합격, 미만이면 불합격 표시
   return (
     <div>
       <h2>시험 결과</h2>
@@ -61,33 +62,32 @@ function ScoreList() {
   );
 }
 
-
-// App.jsx
-function App() {
-  function handleClick() {   
-    alert("버튼이 클릭되었습니다!");  
-  }
-
-  const [isLogin, setIsLogin] = useState(true);     // 로그인 상태
-  const [hasMessage, setHasMessage] = useState(false); // 메시지 상태
+// 메인 페이지 컴포넌트
+function MainPage() {
+  const [isLogin, setIsLogin] = useState(true);
+  const [hasMessage, setHasMessage] = useState(false);
   const name = "민규";
+  const navigate = useNavigate();
+
+  const handleClick = () => alert("버튼이 클릭되었습니다!");
 
   return (
     <div>
-      
+      <h1>메인 페이지</h1>
+      {/* TodoList 페이지로 이동 버튼 */}
+      <button onClick={() => navigate("/todo")}>TodoList로 이동</button>
+
       <h4>Welcome.jsx</h4>
       <Welcome name="민규" />    
-      
+
       <h4>Hello.jsx</h4>
       <Hello name={name} />
-      <p>React와 Vite를 사용하여 개발 중입니다1.</p>
       <Hello name="민수" />
-      <p>React와 Vite를 사용하여 개발 중입니다2.</p>
 
       <h4>Profile.jsx</h4>
       <Profile name="민수" major="디자인" hobby="독서"/>
       <Profile name="민규" major="컴퓨터공학" hobby="게임" />
-      
+
       <h4>handleClick</h4>
       <button onClick={handleClick}>클릭</button>     
 
@@ -108,10 +108,32 @@ function App() {
 
       <h4>ScoreList</h4>
       <ScoreList />
+    </div>
+  );
+}
 
-      <h4>TodoList</h4>
+// TodoList 화면에서 메인 페이지로 돌아가는 버튼 포함
+function TodoPage() {
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h1>TodoList 페이지</h1>
+      <button onClick={() => navigate("/")}>메인 페이지로 돌아가기</button>
       <TodoList />
     </div>
+  );
+}
+
+// App.jsx
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/todo" element={<TodoPage />} />
+      </Routes>
+    </Router>
   );
 }
 

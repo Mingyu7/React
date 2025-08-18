@@ -27,7 +27,7 @@ function TodoList() {
 
   return (
     <div className="todo-container">
-      <h2>할 일 목록</h2>
+      <h2>🌟할 일 목록🌟</h2>
       <input
         type="text"
         value={newTodo}
