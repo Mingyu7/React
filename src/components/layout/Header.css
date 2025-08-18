@@ -1,5 +1,5 @@
 .app-header {
-  background-color: #ffffff;
+  background-color: #ffffffff;
   border-bottom: 1px solid #e5e7eb;
   position: sticky;
   top: 0;
@@ -21,7 +21,7 @@
   font-size: 24px;
   font-weight: 700;
   color: var(--primary);
-  position: static; /* Override global h1 */
+  position: static; /* 전역 h1 스타일 덮어쓰기 */
 }
 
 .logo-link {
@@ -46,7 +46,7 @@
   color: var(--primary);
 }
 
-.app-nav a.active { /* Assuming NavLink might be used later */
+.app-nav a.active { /* 나중에 NavLink를 사용할 경우를 대비 */
   color: var(--primary);
   border-bottom-color: var(--primary);
 }

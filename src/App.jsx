@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Global Styles
+// 전역 스타일
 import './App.css';
 
-// Layout
+// 레이아웃
 import Header from './components/layout/Header';
 import Card from './components/ui/Card';
 
-// Page Components
+// 페이지 컴포넌트
 import TodoList from "./TodoList";
 import LoginStatus from "./components/features/LoginStatus";
 import Notice from "./components/features/Notice";
@@ -16,13 +16,13 @@ import ScoreList from "./components/features/ScoreList";
 import Profile from "./components/greeting/Profile";
 import Welcome from "./components/greeting/Welcome";
 
-// --- Page Definitions ---
+// --- 페이지 정의 ---
 
 function HomePage() {
   return (
     <div>
       <h2 className="page-title">Welcome to ReactStudy</h2>
-      <div className="card-grid">
+      <div className="card-feed">
         <Card>
           <Welcome name="민규" />
         </Card>
@@ -33,16 +33,16 @@ function HomePage() {
           <Profile name="민수" major="디자인" hobby="독서"/>
         </Card>
         <Card>
-          <LoginStatus />
-        </Card>
-        <Card>
-          <Notice />
-        </Card>
-        <Card>
           <SubjectList />
         </Card>
         <Card>
           <ScoreList />
+        </Card>
+        <Card>
+          <LoginStatus />
+        </Card>
+        <Card>
+          <Notice />
         </Card>
       </div>
     </div>
@@ -53,7 +53,7 @@ function TodoPage() {
   return (
     <div>
       <h2 className="page-title">My Todo List</h2>
-      {/* The TodoList component will now be rendered inside a Card */}
+      {/* 이제 TodoList 컴포넌트는 Card 컴포넌트 안에서 렌더링됩니다 */}
       <Card>
         <TodoList />
       </Card>
@@ -62,7 +62,7 @@ function TodoPage() {
 }
 
 
-// --- Main App Structure ---
+// --- 메인 앱 구조 ---
 
 function App() {
   return (

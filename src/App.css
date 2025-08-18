@@ -7,8 +7,8 @@
 .main-content {
   flex-grow: 1;
   width: 100%;
-  max-width: 960px;
-  padding: 24px;
+  max-width: 960px; /* Revert to 960px for a single column */
+  padding: 32px;
   margin: 0 auto;
 }
 
@@ -19,8 +19,9 @@
     color: var(--gray-900);
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+/* Single column card layout */
+.card-feed {
+    display: flex;
+    flex-direction: column;
     gap: 24px;
 }
