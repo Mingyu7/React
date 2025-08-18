@@ -29,10 +29,18 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+p{
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+  line-height: 1.5;
+  color: #bd81eeff;
+}
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #ecd7d7ff;
 }
 
 button {

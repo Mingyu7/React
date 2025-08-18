@@ -2,14 +2,21 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Hellpo from './Hello';
 
 // App.jsx
 function App() {
   const name = "민규";
   return (
     <div>
-      <h1>Hello React!</h1>
-      <p>{name}님, 리액트 세계에 오신 것을 환영합니다 🎉</p>
+      <h1>안녕하세요! 저는 {name}입니다.</h1>
+      <p>전공: 컴퓨터공학</p>
+      <p>취미: 게임 개발,야구보기</p> 
+
+      <Hellpo name={name} />
+      <p>React와 Vite를 사용하여 개발 중입니다1.</p>
+      <Hellpo name="민수" />
+      <p>React와 Vite를 사용하여 개발 중입니다2.</p>
     </div>
   );
 }
