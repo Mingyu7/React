@@ -34,13 +34,18 @@ p{
   padding: 0;
   font-size: 1.2em;
   line-height: 1.5;
-  color: #bd81eeff;
+  color: #ffffff;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  color: #ecd7d7ff;
+  color: #cf97fdff;
+}
+h4 {
+  font-style: italic; 
+  font-size: 25px;  
+  color: #8de0f7ff;
 }
 
 button {
