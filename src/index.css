@@ -43,6 +43,7 @@ h1 {
   color: #cf97fdff;
 }
 h4 {
+  transform: skew(-10deg);
   font-style: italic; 
   font-size: 25px;  
   color: #8de0f7ff;
