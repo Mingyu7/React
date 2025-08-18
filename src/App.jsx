@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Hellpo from './Hello';
+import Hello from './Hello';
 
 // App.jsx
 function App() {
@@ -13,9 +13,9 @@ function App() {
       <p>전공: 컴퓨터공학</p>
       <p>취미: 게임 개발,야구보기</p> 
 
-      <Hellpo name={name} />
+      <Hello name={name} />
       <p>React와 Vite를 사용하여 개발 중입니다1.</p>
-      <Hellpo name="민수" />
+      <Hello name="민수" />
       <p>React와 Vite를 사용하여 개발 중입니다2.</p>
     </div>
   );
