@@ -1,8 +1,10 @@
 import './App.css'
 import Hello from './Hello';
 import Profile from "./Profile";
-import Welcome from "./Welcome";   
+import Welcome from "./Welcome";
+import TodoList from "./TodoList"; // ✅ TodoList 컴포넌트 추가   
 import { useState } from "react"; // ✅ useState 사용
+
 
 // LoginStatus 컴포넌트
 function LoginStatus({ isLogin }) {
@@ -59,6 +61,7 @@ function ScoreList() {
   );
 }
 
+
 // App.jsx
 function App() {
   function handleClick() {   
@@ -71,6 +74,7 @@ function App() {
 
   return (
     <div>
+      
       <h4>Welcome.jsx</h4>
       <Welcome name="민규" />    
       
@@ -101,9 +105,12 @@ function App() {
 
       <h4>SubjectList</h4>
       <SubjectList />
-      
+
       <h4>ScoreList</h4>
       <ScoreList />
+
+      <h4>TodoList</h4>
+      <TodoList />
     </div>
   );
 }
