@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ThemeToggleButton from '../features/ThemeToggleButton';
 import './Header.css';
 
 function Header() {
@@ -8,10 +9,13 @@ function Header() {
         <Link to="/" className="logo-link">
           <h1 className="app-title">MyReactApp</h1>
         </Link>
-        <nav className="app-nav">
-          <Link to="/">Home</Link>
-          <Link to="/todo">Todo List</Link>
-        </nav>
+        <div className="header-right-section">
+          <nav className="app-nav">
+            <Link to="/">Home</Link>
+            <Link to="/todo">Todo List</Link>
+          </nav>
+          <ThemeToggleButton />
+        </div>
       </div>
     </header>
   );

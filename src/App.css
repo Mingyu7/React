@@ -16,7 +16,7 @@
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 24px;
-    color: var(--gray-900);
+    color: var(--text-primary);
 }
 
 /* Single column card layout */
