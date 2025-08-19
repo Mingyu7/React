@@ -1,75 +1,38 @@
-/* 모던 산스 폰트 시스템 & 포레스트 그린 컬러 시스템 */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* --- 테마 변수 정의 --- */
-:root {
-  /* 기본 색상 팔레트 (변경되지 않음) */
-  --primary: #10b981;
-  --secondary: #059669;
-  --accent: #34d399;
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --error: #ef4444;
-
-  /* 라이트 모드 (기본값) */
-  --background: #f9fafb; /* gray-50 */
-  --text-primary: #111827; /* gray-900 */
-  --text-secondary: #6b7280; /* gray-500 */
-  --card-background: #ffffff;
-  --border-color: #e5e7eb; /* gray-200 */
-  --accent-border: var(--accent);
+/* 기본(라이트) */
+:root{
+  --bg:#ffffff; --card:#f8fafc; --text:#111827; --muted:#6b7280; --border:#e5e7eb;
+  --accent:#3b82f6; --accent-weak:rgba(59,130,246,.18);
+  --danger:#b91c1c; --danger-bg:#fee2e2;
 }
 
-[data-theme='dark'] {
-  /* 다크 모드 */
-  --background: #111827; /* gray-900 */
-  --text-primary: #f9fafb; /* gray-50 */
-  --text-secondary: #9ca3af; /* gray-400 */
-  --card-background: #1f2937; /* gray-800 */
-  --border-color: #374151; /* gray-700 */
-  --accent-border: var(--primary);
+/* 다크 모드 */
+html[data-mode="dark"]{
+  --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937;
+  --danger:#fca5a5; --danger-bg:#3f1d1d;
 }
 
+/* 팔레트 */
+html[data-palette="blue"]   { --accent:#3b82f6; --accent-weak:rgba(59,130,246,.18); }
+html[data-palette="green"]  { --accent:#10b981; --accent-weak:rgba(16,185,129,.18); }
+html[data-palette="purple"] { --accent:#8b5cf6; --accent-weak:rgba(139,92,246,.18); }
+html[data-palette="pink"]   { --accent:#ec4899; --accent-weak:rgba(236,72,153,.18); }
+html[data-palette="orange"] { --accent:#f59e0b; --accent-weak:rgba(245,158,11,.20); }
 
-/* --- 리셋 및 기본 스타일 --- */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* 커스텀 유틸리티: 색상은 CSS 변수에 매핑 */
+@layer utilities{
+  .bg-app{background-color:var(--bg)}
+  .bg-card{background-color:var(--card)}
+  .text-app{color:var(--text)}
+  .text-muted{color:var(--muted)}
+  .border-app{border-color:var(--border)}
+  .bg-accent{background-color:var(--accent)}
+  .hover\:bg-accent-weak:hover{background-color:var(--accent-weak)}
+  .ring-accent{box-shadow:0 0 0 4px var(--accent-weak)}
 }
 
-body {
-  font-family: 'Pretendard', 'Inter', system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-primary);
-  background-color: var(--background);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-#root {
-  min-height: 100vh;
-}
-
-/* --- 일반 버튼 스타일 --- */
-.button {
-  display: inline-block;
-  padding: 10px 18px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 1em;
-  font-weight: 500;
-  cursor: pointer;
-  transition: transform 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out;
-  background-color: var(--primary);
-  color: white;
-}
-
-.button:hover {
-  background-color: var(--secondary);
-  transform: scale(1.02);
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
